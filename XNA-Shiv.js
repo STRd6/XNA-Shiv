@@ -8,7 +8,8 @@ Canvas = function() {
 };
 Canvas.prototype = {
   drawImage: function() {
-    return __XNA__Canvas.drawImage.apply(this, arguments);
+    __XNA__Canvas.drawImage.apply(this, arguments);
+    return this;
   },
   withTransform: function(matrix, block) {
     __XNA__Canvas.begin(matrix.a, matrix.b, matrix.c, matrix.d, matrix.tx, matrix.ty);
