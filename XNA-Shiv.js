@@ -7,9 +7,9 @@ Canvas = function() {
   currentTransform = Matrix.IDENTITY;
   return {
     drawImage: function(image, sourceX, sourceY, sourceWidth, sourceHeight, destX, destY, destWidth, destHeight) {
-      var _ref;
-      _ref = currentTransform.transformPoint(Point(destX, destY)), destX = _ref[0], destY = _ref[1];
-      __XNA__Canvas.drawImage(image, sourceX, sourceY, sourceWidth, sourceHeight, destX, destY, destWidth, destHeight);
+      var x, y, _ref;
+      _ref = currentTransform.transformPoint(Point(destX, destY)), x = _ref.x, y = _ref.y;
+      __XNA__Canvas.drawImage(image, sourceX, sourceY, sourceWidth, sourceHeight, x, y, destWidth, destHeight);
       return this;
     },
     withTransform: function(matrix, block) {
