@@ -1,19 +1,24 @@
 Canvas = ->
-  Object.extend {}, __XNA__Canvas,  
-    withTransform: (matrix, block) ->
-      this.begin(
-        matrix.a,
-        matrix.b,
-        matrix.c,
-        matrix.d,
-        matrix.tx,
-        matrix.ty
-      )
+  __proto__: Canvas::
 
-      try
-        block(this)
-      finally
-        this.end()
+Canvas::
+  drawImage: ->
+    __XNA__Canvas.drawImage.apply(this, arguments)
 
-      return this
+  withTransform: (matrix, block) ->
+    __XNA__Canvas.begin(
+      matrix.a,
+      matrix.b,
+      matrix.c,
+      matrix.d,
+      matrix.tx,
+      matrix.ty
+    )
+
+    try
+      block(this)
+    finally
+      __XNA__Canvas.end()
+
+    return this
 
