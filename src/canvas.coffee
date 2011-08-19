@@ -22,3 +22,8 @@ Canvas = ->
 
     return this
 
+Sprite.loadByName = (name, callback) ->
+  img = __XNA__Sprite.loadByName(name);
+
+  Sprite(img, 0, 0, img.Width, img.Height);
+

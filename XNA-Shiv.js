@@ -24,5 +24,10 @@ Canvas = function() {
       return this;
     }
   };
+};
+Sprite.loadByName = function(name, callback) {
+  var img;
+  img = __XNA__Sprite.loadByName(name);
+  return Sprite(img, 0, 0, img.Width, img.Height);
 };;
 ;
