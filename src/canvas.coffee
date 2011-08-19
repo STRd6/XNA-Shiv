@@ -1,9 +1,11 @@
 Canvas = ->
   __proto__: Canvas::
 
-Canvas::
+Canvas:: =
   drawImage: ->
     __XNA__Canvas.drawImage.apply(this, arguments)
+
+    return this
 
   withTransform: (matrix, block) ->
     __XNA__Canvas.begin(
