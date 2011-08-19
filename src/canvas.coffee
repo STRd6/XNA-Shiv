@@ -4,9 +4,9 @@ Canvas = ->
 
   drawImage: (image, sourceX, sourceY, sourceWidth, sourceHeight, destX, destY, destWidth, destHeight) ->
     # TODO: Get matrix scale and rotation components and pass them through
-    [destX, destY] = currentTransform.transformPoint(Point(destX, destY))
+    [x, y] = currentTransform.transformPoint(Point(destX, destY))
 
-    __XNA__Canvas.drawImage(image, sourceX, sourceY, sourceWidth, sourceHeight, destX, destY, destWidth, destHeight)
+    __XNA__Canvas.drawImage(image, sourceX, sourceY, sourceWidth, sourceHeight, x, y, destWidth, destHeight)
 
     return this
 
