@@ -1,26 +1,21 @@
 Canvas = ->
-  __proto__: Canvas::
+  transformStack = []
+  currentTransform = Matrix.IDENTITY
 
-Canvas:: =
-  drawImage: ->
-    __XNA__Canvas.drawImage.apply(this, arguments)
+  drawImage: (image, sourceX, sourceY, sourceWidth, sourceHeight, destX, destY, destWidth, destHeight) ->
+    __XNA__Canvas.drawImage(image, sourceX, sourceY, sourceWidth, sourceHeight, destX, destY, destWidth, destHeight)
 
     return this
 
   withTransform: (matrix, block) ->
-    __XNA__Canvas.begin(
-      matrix.a,
-      matrix.b,
-      matrix.c,
-      matrix.d,
-      matrix.tx,
-      matrix.ty
-    )
+    currentTransform = currentTransform.concat(matrix)
+    transformStack.push currentTransform
 
     try
       block(this)
     finally
-      __XNA__Canvas.end()
+      transformStack.pop()
+      currentTransform = transformStack.last() || Matrix.IDENTITY
 
     return this
 
