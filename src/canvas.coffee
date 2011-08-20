@@ -2,6 +2,13 @@ Canvas = ->
   transformStack = []
   currentTransform = Matrix.IDENTITY
 
+  clear: ->
+    __XNA__Canvas.clear()
+
+  fill: (color) ->
+    #TODO: Pass color through
+    __XNA__Canvas.fill()
+
   drawImage: (image, sourceX, sourceY, sourceWidth, sourceHeight, destX, destY, destWidth, destHeight) ->
     # TODO: Get matrix scale and rotation components and pass them through
     {x, y} = currentTransform.transformPoint(Point(destX, destY))
