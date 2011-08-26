@@ -1,6 +1,7 @@
 Canvas = ->
   transformStack = []
   currentTransform = Matrix.IDENTITY
+  fillColor = Color("black")
 
   clear: ->
     XNA_Canvas.clear()
@@ -12,11 +13,16 @@ Canvas = ->
     #TODO: Pass color through
     XNA_Canvas.fill()
 
-  fillColor: ->
-    ;#TODO
+  fillColor: (color) ->
+    fillColor = Color(color)
 
-  fillRect: ->
-    ;#TODO
+  fillRect: (x, y, width, height)->
+    r = fillColor.r() & 0xFF
+    g = fillColor.g() & 0xFF
+    b = fillColor.b() & 0xFF
+    a = (fillColor.a() * 0xFF) & 0xFF
+
+    XNA_Canvas.fillRect(x, y, width, height, r, g, b, a)
 
   drawImage: (image, sourceX, sourceY, sourceWidth, sourceHeight, destX, destY, destWidth, destHeight) ->
     # TODO: Get matrix scale and rotation components and pass them through
