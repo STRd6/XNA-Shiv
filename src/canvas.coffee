@@ -10,6 +10,7 @@ Canvas = ->
     ;#TODO
 
   fill: (color) ->
+    #TODO: This is terrifying
     r = fillColor.r() & 0xFF
     g = fillColor.g() & 0xFF
     b = fillColor.b() & 0xFF
