@@ -7,15 +7,18 @@ Canvas = function() {
   currentTransform = Matrix.IDENTITY;
   return {
     clear: function() {
-      return __XNA__Canvas.clear();
+      return XNA_Canvas.clear();
     },
+    createPattern: function() {},
     fill: function(color) {
-      return __XNA__Canvas.fill();
+      return XNA_Canvas.fill();
     },
+    fillColor: function() {},
+    fillRect: function() {},
     drawImage: function(image, sourceX, sourceY, sourceWidth, sourceHeight, destX, destY, destWidth, destHeight) {
       var x, y, _ref;
       _ref = currentTransform.transformPoint(Point(destX, destY)), x = _ref.x, y = _ref.y;
-      __XNA__Canvas.drawImage(image, sourceX, sourceY, sourceWidth, sourceHeight, x, y, destWidth, destHeight);
+      XNA_Canvas.drawImage(image, sourceX, sourceY, sourceWidth, sourceHeight, x, y, destWidth, destHeight);
       return this;
     },
     withTransform: function(matrix, block) {
@@ -30,10 +33,21 @@ Canvas = function() {
       return this;
     }
   };
-};
+};;
+var keydown;
+keydown = {};
+keydown.__defineGetter__("left", function() {
+  return XNA_Keyboard.keyDown("Left");
+});
+keydown.__defineGetter__("right", function() {
+  return XNA_Keyboard.keyDown("Right");
+});
+keydown.__defineGetter__("space", function() {
+  return XNA_Keyboard.keyDown("Space");
+});;
 Sprite.loadByName = function(name, callback) {
   var img;
-  img = __XNA__Sprite.loadByName(name);
+  img = XNA_Sprite.loadByName(name);
   return Sprite(img, 0, 0, img.Width, img.Height);
 };;
 ;
