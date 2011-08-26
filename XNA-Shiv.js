@@ -12,7 +12,12 @@ Canvas = function() {
     },
     createPattern: function() {},
     fill: function(color) {
-      return XNA_Canvas.fill();
+      var a, b, g, r;
+      r = fillColor.r() & 0xFF;
+      g = fillColor.g() & 0xFF;
+      b = fillColor.b() & 0xFF;
+      a = (fillColor.a() * 0xFF) & 0xFF;
+      return XNA_Canvas.fill(r, g, b, a);
     },
     fillColor: function(color) {
       return fillColor = Color(color);
