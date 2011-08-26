@@ -6,14 +6,17 @@ Canvas = ->
     XNA_Canvas.clear()
 
   createPattern: ->
+    ;#TODO
 
   fill: (color) ->
     #TODO: Pass color through
     XNA_Canvas.fill()
 
   fillColor: ->
+    ;#TODO
 
   fillRect: ->
+    ;#TODO
 
   drawImage: (image, sourceX, sourceY, sourceWidth, sourceHeight, destX, destY, destWidth, destHeight) ->
     # TODO: Get matrix scale and rotation components and pass them through
