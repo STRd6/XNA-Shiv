@@ -10,8 +10,12 @@ Canvas = ->
     ;#TODO
 
   fill: (color) ->
-    #TODO: Pass color through
-    XNA_Canvas.fill()
+    r = fillColor.r() & 0xFF
+    g = fillColor.g() & 0xFF
+    b = fillColor.b() & 0xFF
+    a = (fillColor.a() * 0xFF) & 0xFF
+
+    XNA_Canvas.fill(r, g, b, a)
 
   fillColor: (color) ->
     fillColor = Color(color)
