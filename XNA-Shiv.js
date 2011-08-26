@@ -2,9 +2,10 @@
 ;
 var Canvas;
 Canvas = function() {
-  var currentTransform, transformStack;
+  var currentTransform, fillColor, transformStack;
   transformStack = [];
   currentTransform = Matrix.IDENTITY;
+  fillColor = Color("black");
   return {
     clear: function() {
       return XNA_Canvas.clear();
@@ -13,8 +14,17 @@ Canvas = function() {
     fill: function(color) {
       return XNA_Canvas.fill();
     },
-    fillColor: function() {},
-    fillRect: function() {},
+    fillColor: function(color) {
+      return fillColor = Color(color);
+    },
+    fillRect: function(x, y, width, height) {
+      var a, b, g, r;
+      r = fillColor.r() & 0xFF;
+      g = fillColor.g() & 0xFF;
+      b = fillColor.b() & 0xFF;
+      a = (fillColor.a() * 0xFF) & 0xFF;
+      return XNA_Canvas.fillRect(x, y, width, height, r, g, b, a);
+    },
     drawImage: function(image, sourceX, sourceY, sourceWidth, sourceHeight, destX, destY, destWidth, destHeight) {
       var x, y, _ref;
       _ref = currentTransform.transformPoint(Point(destX, destY)), x = _ref.x, y = _ref.y;
