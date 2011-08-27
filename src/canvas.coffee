@@ -38,7 +38,7 @@ Canvas = ->
 
     XNA_Canvas.fillRect(x, y, width, height, r, g, b, a)
 
-  fillTiledRect: (image, destX, destY, destWidth, destHeight) ->
+  fillTiledRect: (image, sourceX, sourceY, sourceWidth, sourceHeight, destX, destY, destWidth, destHeight) ->
     {x, y} = currentTransform.transformPoint(Point(destX, destY))
 
     XNA_Canvas.drawImage(image, x, y, destWidth, destHeight)
