@@ -22,7 +22,11 @@ Canvas = ->
     XNA_Canvas.fill(r, g, b, a)
 
   fillColor: (color) ->
-    fillColor = Color(color)
+    if color
+      fillColor = Color(color)
+      return this
+    else
+      return fillColor
 
   fillRect: (x, y, width, height) ->
     r = fillColor.r() & 0xFF
