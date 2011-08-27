@@ -27,6 +27,8 @@ Canvas = ->
     b = fillColor.b() & 0xFF
     a = (fillColor.a() * 0xFF) & 0xFF
 
+    {x, y} = currentTransform.transformPoint(Point(x, y))
+
     XNA_Canvas.fillRect(x, y, width, height, r, g, b, a)
 
   fillTiledRect: (image, destX, destY, destWidth, destHeight) ->
