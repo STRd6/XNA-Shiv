@@ -13,6 +13,9 @@ Canvas = function() {
     createPattern: function() {},
     fill: function(color) {
       var a, b, g, r;
+      if (color) {
+        this.fillColor(color);
+      }
       r = fillColor.r() & 0xFF;
       g = fillColor.g() & 0xFF;
       b = fillColor.b() & 0xFF;
