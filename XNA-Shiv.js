@@ -23,7 +23,12 @@ Canvas = function() {
       return XNA_Canvas.fill(r, g, b, a);
     },
     fillColor: function(color) {
-      return fillColor = Color(color);
+      if (color) {
+        fillColor = Color(color);
+        return this;
+      } else {
+        return fillColor;
+      }
     },
     fillRect: function(x, y, width, height) {
       var a, b, g, r, _ref;
