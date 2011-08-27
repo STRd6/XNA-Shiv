@@ -41,7 +41,7 @@ Canvas = ->
   fillTiledRect: (image, sourceX, sourceY, sourceWidth, sourceHeight, destX, destY, destWidth, destHeight) ->
     {x, y} = currentTransform.transformPoint(Point(destX, destY))
 
-    XNA_Canvas.drawImage(image, x, y, destWidth, destHeight)
+    XNA_Canvas.drawImage(image, sourceX, sourceY, sourceWidth, sourceHeight, x, y, destWidth, destHeight)
 
     return this
 
