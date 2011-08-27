@@ -21,13 +21,20 @@ Canvas = ->
   fillColor: (color) ->
     fillColor = Color(color)
 
-  fillRect: (x, y, width, height)->
+  fillRect: (x, y, width, height) ->
     r = fillColor.r() & 0xFF
     g = fillColor.g() & 0xFF
     b = fillColor.b() & 0xFF
     a = (fillColor.a() * 0xFF) & 0xFF
 
     XNA_Canvas.fillRect(x, y, width, height, r, g, b, a)
+
+  fillTiledRect: (image, destX, destY, destWidth, destHeight) ->
+    {x, y} = currentTransform.transformPoint(Point(destX, destY))
+
+    XNA_Canvas.drawImage(image, x, y, destWidth, destHeight)
+
+    return this
 
   drawImage: (image, sourceX, sourceY, sourceWidth, sourceHeight, destX, destY, destWidth, destHeight) ->
     # TODO: Get matrix scale and rotation components and pass them through
