@@ -23,12 +23,19 @@ Canvas = function() {
       return fillColor = Color(color);
     },
     fillRect: function(x, y, width, height) {
-      var a, b, g, r;
+      var a, b, g, r, _ref;
       r = fillColor.r() & 0xFF;
       g = fillColor.g() & 0xFF;
       b = fillColor.b() & 0xFF;
       a = (fillColor.a() * 0xFF) & 0xFF;
+      _ref = currentTransform.transformPoint(Point(x, y)), x = _ref.x, y = _ref.y;
       return XNA_Canvas.fillRect(x, y, width, height, r, g, b, a);
+    },
+    fillTiledRect: function(image, destX, destY, destWidth, destHeight) {
+      var x, y, _ref;
+      _ref = currentTransform.transformPoint(Point(destX, destY)), x = _ref.x, y = _ref.y;
+      XNA_Canvas.drawImage(image, x, y, destWidth, destHeight);
+      return this;
     },
     drawImage: function(image, sourceX, sourceY, sourceWidth, sourceHeight, destX, destY, destWidth, destHeight) {
       var x, y, _ref;
