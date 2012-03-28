@@ -1,6 +1,7 @@
 keydown = {}
 
-keydown.__defineGetter__("left", -> XNA_Keyboard.keyDown("Left"))
-keydown.__defineGetter__("right", -> XNA_Keyboard.keyDown("Right"))
-keydown.__defineGetter__("space", -> XNA_Keyboard.keyDown("Space"))
+["left right up down space"].split(" ").each (key) ->
+  keydown.__defineGetter__(key, -> XNA_Keyboard.keyDown(key.capitalize()))
 
+["abcdefghijklmnopqrstuvwxyz"].split('').each (key) ->
+  keydown.__defineGetter__(key, -> XNA_Keyboard.keyDown(key.toUpperCase()))
